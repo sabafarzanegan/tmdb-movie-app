@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #303030;
+}
+
+@font-face {
+  font-family: "vazir";
+  src: url(./assets/fontes/Vazirmatn-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: "lale";
+  src: url(./assets/fontes/Lalezar-Regular.ttf);
+}
