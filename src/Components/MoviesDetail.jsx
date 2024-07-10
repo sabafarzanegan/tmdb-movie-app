@@ -1,7 +1,8 @@
 import React from "react";
+import Card from "./Card";
 
 function MoviesDetail() {
-  return <div>MoviesDetail</div>;
+  return <Card />;
 }
 
 export default MoviesDetail;

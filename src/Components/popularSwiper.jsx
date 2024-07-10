@@ -25,7 +25,7 @@ function PopularSwiper() {
           "--swiper-pagination-color": "#DF2144",
           "--swiper-pagination-bullet-inactive-color": "#999999",
           "--swiper-pagination-bullet-inactive-opacity": "1",
-          "--swiper-pagination-bullet-size": "10px",
+          "--swiper-pagination-bullet-size": "8px",
           "--swiper-pagination-bullet-horizontal-gap": "4px",
         }}
         spaceBetween={30}

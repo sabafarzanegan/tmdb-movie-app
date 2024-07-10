@@ -21,7 +21,7 @@ function Navbar() {
       <Container>
         <div
           className={`w-full h-screen py-6 px-4 bg-gradient-to-t from-neutral-800  to-red-900 absolute  right-0 transition-all duration-300 z-10 ${
-            activeNavbar ? "top-0" : "-top-[700px]"
+            activeNavbar ? "top-0" : "-top-[2000px]"
           }`}>
           {/* top section */}
           <div className="flex items-center justify-between font-bold font-vazir text-lg ">
