@@ -14,3 +14,7 @@ body {
   font-family: "lale";
   src: url(./assets/fontes/Lalezar-Regular.ttf);
 }
+
+.active {
+  @apply border-b-2  transition-all duration-200 border-primary;
+}

@@ -21,6 +21,13 @@ function PopularSwiper() {
   return (
     <>
       <Swiper
+        style={{
+          "--swiper-pagination-color": "#DF2144",
+          "--swiper-pagination-bullet-inactive-color": "#999999",
+          "--swiper-pagination-bullet-inactive-opacity": "1",
+          "--swiper-pagination-bullet-size": "10px",
+          "--swiper-pagination-bullet-horizontal-gap": "4px",
+        }}
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -36,7 +43,7 @@ function PopularSwiper() {
           <SwiperSlide key={movie.id}>
             <Link to={`/movies/${movie.id}`}>
               <img
-                className="w-[100%]  mx-auto h-[400px] md:h-[500px] relative "
+                className="w-[100%]  mx-auto h-[400px] md:h-[500px]  opacity-60 relative "
                 src={` http://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                 alt=""
               />

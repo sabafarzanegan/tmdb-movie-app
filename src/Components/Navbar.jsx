@@ -6,8 +6,9 @@ import { IoMdClose } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { MdMovieFilter } from "react-icons/md";
 import { MdOutlineLocalMovies } from "react-icons/md";
+import { GoHome } from "react-icons/go";
 import Container from "./Container";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 function Navbar() {
   const [activeNavbar, setActiveNavbar] = useState(false);
   const [menuBarMovie, setMenuBarMovie] = useState(false);
@@ -42,7 +43,7 @@ function Navbar() {
             </ul>
           </div>
         </div>
-        <div className="flex items-center justify-between py-2 px-2">
+        <div className="flex items-center justify-between py-3 px-2">
           {/* logo and name */}
           <div className="flex items-center justify-center gap-x-2 text-primary">
             <Link to="/">
@@ -62,7 +63,16 @@ function Navbar() {
           {/* menu */}
           <nav className="  font-vazir font-medium text-xl hidden sm:block">
             <ul className=" flex items-center justify-center gap-x-6">
-              <Link to="/movies" className="relative">
+              <NavLink to="/">
+                <li className="flex items-center justify-center gap-x-1  ml-1 text-white font-vazir">
+                  <span className="text-secoundary text-md">
+                    {" "}
+                    <GoHome />
+                  </span>
+                  <span>Home</span>
+                </li>
+              </NavLink>
+              <NavLink to="/movies" className="relative">
                 <li className=" flex items-center justify-center gap-x-1">
                   <span className="text-secoundary text-md">
                     <MdMovieFilter />
@@ -84,9 +94,9 @@ function Navbar() {
                   <li className="mb-2">جنایی</li>
                   <li className="mb-2">رمانتیک</li>
                 </div>
-              </Link>
+              </NavLink>
 
-              <Link to="/series" className="relative">
+              <NavLink to="/series" className="relative">
                 <li className="flex items-center justify-center gap-x-1">
                   <span className="text-secoundary text-md">
                     <MdOutlineLocalMovies />
@@ -108,7 +118,7 @@ function Navbar() {
                   <li className="mb-2">جنایی</li>
                   <li className="mb-2">رمانتیک</li>
                 </div>
-              </Link>
+              </NavLink>
             </ul>
           </nav>
           {/* searchbar */}
