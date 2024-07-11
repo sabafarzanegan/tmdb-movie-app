@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { useMovieContext } from "../Context/MovieContext";
 
 import { Link } from "react-router-dom";
 import { SiImdb } from "react-icons/si";
-import { MovieContext } from "../Context/MovieContext";
-import axios from "axios";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -37,11 +36,12 @@ function PopularSwiper() {
         pagination={{
           clickable: true,
         }}
+        loop
         modules={[Autoplay, Pagination]}
         className="mySwiper mt-2 ">
         {popularMovie.map((movie) => (
           <SwiperSlide key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>
+            <Link to={`/detailmovie/${movie.id}`}>
               <img
                 className="w-[100%]  mx-auto h-[400px] md:h-[500px]  opacity-60 relative "
                 src={` http://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
