@@ -5,10 +5,12 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import Series from "./pages/Series";
-import MoviesDetail from "./Components/MoviesDetail";
+
 import TopRatedMoviesPage from "./pages/TopRatedMoviesPage";
 import LatestSeriesPage from "./pages/LatestSeries";
 import PopularSeriesPage from "./pages/PopularSeriesPage";
+import MovieDetailPage from "./pages/MovieDetailPage";
+import SeriesDetailPage from "./pages/SeriesDetailPage";
 function App() {
   return (
     <>
@@ -20,7 +22,8 @@ function App() {
         <Route path="/TRM" element={<TopRatedMoviesPage />} />
         <Route path="/latestseries" element={<LatestSeriesPage />} />
         <Route path="/popularseries" element={<PopularSeriesPage />} />
-        <Route path="/detailmovie/:id" element={<MoviesDetail />} />
+        <Route path="/detailmovie/:id" element={<MovieDetailPage />} />
+        <Route path="/detailseries/:id" element={<SeriesDetailPage />} />
       </Routes>
       <MobileNavbar />
     </>

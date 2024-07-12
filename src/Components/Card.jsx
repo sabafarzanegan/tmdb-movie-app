@@ -5,7 +5,8 @@ function Card({ ...movie }) {
   return (
     <>
       {/* card container */}
-      <Link to={`/detailmovie/${movie.id}`}>
+      <Link
+        to={`${movie.title ? "/detailmovie" : "/detailseries"}/${movie.id}`}>
         <div className="group  mb-20 flex flex-col items-center justify-center gap-y-2  ">
           <img
             src={` http://image.tmdb.org/t/p/original/${movie.poster_path}`}

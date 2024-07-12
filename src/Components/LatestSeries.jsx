@@ -18,14 +18,16 @@ function LatestSeries() {
     <Container>
       <div>
         {/* title */}
-        <div className="flex items-center justify-center gap-x-1">
-          <MdLocalFireDepartment className="text-white text-xl" />
+        <h2 className="flex items-center justify-between gap-x-2 py-6 px-2 ">
+          <span className="text-lg font-vazir text-white font-bold px-2 ">
+            آخرین سریال های بروز شده
+          </span>
           <Link to="/latestseries">
-            <h2 className="font-vazir text-center mt-2 mb-4 text-white font-semibold text-lg">
-              آخرین سریال های بروز شده
-            </h2>
+            <span className="text-base text-secoundary font-lale text-md">
+              مشاهده بیشتر
+            </span>
           </Link>
-        </div>
+        </h2>
 
         <Swiper
           slidesPerView={4}

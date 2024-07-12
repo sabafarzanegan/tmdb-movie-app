@@ -69,7 +69,7 @@ function Navbar() {
                     {" "}
                     <GoHome />
                   </span>
-                  <span>Home</span>
+                  <span>خانه</span>
                 </li>
               </NavLink>
               <NavLink to="/movies" className="relative">

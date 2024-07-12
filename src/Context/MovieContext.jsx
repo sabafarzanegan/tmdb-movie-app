@@ -13,6 +13,7 @@ export const MovieProvider = ({ children }) => {
   const [Alltending, setAllTrending] = useState([]);
   const [latestTv, setLatestTv] = useState([]);
   const [page, setPage] = useState();
+  const [time, setTime] = useState("week");
 
   const getPopularMovie = async (Page = "1") => {
     try {
@@ -116,8 +117,9 @@ export const MovieProvider = ({ children }) => {
 
   const getAllTrending = async () => {
     try {
+      setLoading(true);
       const res = await fetch(
-        "https://api.themoviedb.org/3/trending/all/week",
+        `https://api.themoviedb.org/3/trending/all/${time}`,
         {
           method: "GET",
           params: { language: "en-US" },
@@ -130,6 +132,7 @@ export const MovieProvider = ({ children }) => {
       );
       const data = await res.json();
       if (res.status === 200) {
+        setLoading(false);
         return data;
       }
     } catch (error) {
@@ -141,9 +144,13 @@ export const MovieProvider = ({ children }) => {
     getPopularMovie(page).then((res) => setPopularMovie(res.results));
     getRatedmovies().then((res) => setTopRatedMovie(res.results));
     getPopularTv().then((res) => setPopularTv(res.results));
-    getAllTrending().then((res) => setAllTrending(res.results));
+
     getLatestTv(page).then((res) => setLatestTv(res.results));
   }, []);
+
+  useEffect(() => {
+    getAllTrending().then((res) => setAllTrending(res.results));
+  }, [time]);
 
   return (
     <MovieContext.Provider
@@ -156,6 +163,8 @@ export const MovieProvider = ({ children }) => {
         Alltending,
         latestTv,
         page,
+        time,
+        setTime,
         setPage,
         getPopularMovie,
         getRatedmovies,
