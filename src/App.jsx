@@ -6,6 +6,9 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import Series from "./pages/Series";
 import MoviesDetail from "./Components/MoviesDetail";
+import TopRatedMoviesPage from "./pages/TopRatedMoviesPage";
+import LatestSeriesPage from "./pages/LatestSeries";
+import PopularSeriesPage from "./pages/PopularSeriesPage";
 function App() {
   return (
     <>
@@ -14,7 +17,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/series" element={<Series />} />
-        <Route path="/movies/:id" element={<MoviesDetail />} />
+        <Route path="/TRM" element={<TopRatedMoviesPage />} />
+        <Route path="/latestseries" element={<LatestSeriesPage />} />
+        <Route path="/popularseries" element={<PopularSeriesPage />} />
+        <Route path="/detailmovie/:id" element={<MoviesDetail />} />
       </Routes>
       <MobileNavbar />
     </>

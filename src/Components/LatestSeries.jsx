@@ -13,22 +13,24 @@ import CardTV from "./CardTv";
 
 function LatestSeries() {
   const { latestTv } = useMovieContext();
-  console.log("latest", latestTv);
+
   return (
     <Container>
       <div>
         {/* title */}
         <div className="flex items-center justify-center gap-x-1">
           <MdLocalFireDepartment className="text-white text-xl" />
-          <h2 className="font-vazir text-center mt-2 mb-4 text-white font-semibold text-lg">
-            آخرین سریال های بروز شده
-          </h2>
+          <Link to="/latestseries">
+            <h2 className="font-vazir text-center mt-2 mb-4 text-white font-semibold text-lg">
+              آخرین سریال های بروز شده
+            </h2>
+          </Link>
         </div>
 
         <Swiper
           slidesPerView={4}
           autoplay={{
-            delay: 2000,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           freeMode={true}

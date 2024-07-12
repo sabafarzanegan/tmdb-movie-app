@@ -15,7 +15,7 @@ import Card from "./Card";
 import Container from "./Container";
 
 export default function TopratedSlider() {
-  const { topRatedMovie } = useMovieContext();
+  const { topRatedMovie, page } = useMovieContext();
 
   return (
     <>
@@ -24,9 +24,11 @@ export default function TopratedSlider() {
           <span className="text-lg font-vazir text-white font-bold px-2 ">
             Top Rated Movies
           </span>
-          <span className="text-base text-secoundary font-lale text-md">
-            مشاهده بیشتر
-          </span>
+          <Link to="/TRM">
+            <span className="text-base text-secoundary font-lale text-md">
+              مشاهده بیشتر
+            </span>
+          </Link>
         </h2>
         <Swiper
           slidesPerView={4}

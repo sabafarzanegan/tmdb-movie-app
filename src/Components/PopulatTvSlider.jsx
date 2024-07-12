@@ -1,6 +1,7 @@
 import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 
 // Import Swiper styles
 import "swiper/css";
@@ -15,7 +16,6 @@ import Card from "./Card";
 
 export default function PopularTvSlider() {
   const { popularTv } = useMovieContext();
-  console.log("slider:", popularTv);
 
   return (
     <>
@@ -24,9 +24,11 @@ export default function PopularTvSlider() {
           <span className="text-lg font-vazir text-white font-bold px-2 ">
             Top Rated Series
           </span>
-          <span className="text-base text-secoundary font-lale text-md">
-            مشاهده بیشتر
-          </span>
+          <Link to="/popularseries">
+            <span className="text-base text-secoundary font-lale text-md">
+              مشاهده بیشتر
+            </span>
+          </Link>
         </h2>
         <Swiper
           slidesPerView={4}

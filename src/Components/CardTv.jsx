@@ -10,7 +10,7 @@ function CardTV({ ...movie }) {
           <img
             src={` http://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
             alt=""
-            className="rounded-lg overflow-hidden hover:opacity-60 transition-all duration-75"
+            className="rounded-lg overflow-hidden hover:scale-[1.1] duration-65 hover:opacity-60 transition-all "
           />
           <h2 className="text-center font-vazir text-white text-xs md:text-base ">
             {movie.name}

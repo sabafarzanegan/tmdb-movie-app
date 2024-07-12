@@ -6,7 +6,7 @@ import { VscAccount } from "react-icons/vsc";
 
 function MobileNavbar() {
   return (
-    <div className=" fixed bottom-0 right-0  z-10 w-full py-1 bg-[#0B1115] text-white font-vazir sm:hidden ">
+    <div className=" fixed bottom-0 right-0  z-10 w-full  bg-[#0B1115] text-white font-vazir sm:hidden ">
       <ul className="w-full flex items-center justify-center gap-x-4 sm:p-0 md:p-2 py-1">
         <li className="flex flex-col items-center justify-center gap-y-1 ">
           <span>

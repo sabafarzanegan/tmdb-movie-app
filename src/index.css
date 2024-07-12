@@ -16,5 +16,5 @@ body {
 }
 
 .active {
-  @apply border-b-2  transition-all duration-200 border-primary;
+  @apply border-b-2  transition-all duration-200 border-primary py-2;
 }
