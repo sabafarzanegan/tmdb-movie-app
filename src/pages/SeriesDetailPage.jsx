@@ -5,6 +5,7 @@ import { useMovieContext } from "../Context/MovieContext";
 import { useParams } from "react-router-dom";
 import { SiImdb } from "react-icons/si";
 import SwiperCast from "../Components/SwiperCast";
+import { getDetailSeries, getCastseries } from "../Utilis/MoviesFetch";
 
 function SeriesDetailPage() {
   const [detailSeries, setDetailSeries] = useState({});
@@ -15,54 +16,17 @@ function SeriesDetailPage() {
 
   const seriesID = useParams();
 
-  const getDetailSeries = async () => {
-    try {
-      setLoading(true);
-      const res = await fetch(
-        `https://api.themoviedb.org/3/tv/${seriesID.id}`,
-        {
-          method: "GET",
-          params: { language: "en-US" },
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNDZjZmQzOWM2NWNjODI4ODY2ODhmYjgwZjUwM2M5ZiIsIm5iZiI6MTcyMDc4Mzg1NC4zODQ4MTQsInN1YiI6IjY2MjNjMGE5YWY5NTkwMDE2NDY3Mjk0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D0JX0Rd-_CQO4sWhXXxDv-D93T3PSwDUKiCsCXOPeJA",
-          },
-        }
-      );
-      const data = await res.json();
-      if (res.status === 200) {
-        setLoading(false);
-        setDetailSeries(data);
-
-        setGeners(data.genres);
-        setLastEP(data.last_episode_to_air.episode_number);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const getCast = async () => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/tv/${seriesID.id}/credits`,
-      {
-        method: "GET",
-        params: { language: "en-US" },
-        headers: {
-          accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNDZjZmQzOWM2NWNjODI4ODY2ODhmYjgwZjUwM2M5ZiIsIm5iZiI6MTcyMDc4Mzg1NC4zODQ4MTQsInN1YiI6IjY2MjNjMGE5YWY5NTkwMDE2NDY3Mjk0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D0JX0Rd-_CQO4sWhXXxDv-D93T3PSwDUKiCsCXOPeJA",
-        },
-      }
-    );
-    const data = await res.json();
-    if (res.status === 200) {
-      setCast(data.cast.slice(0, 20));
-    }
-  };
   useEffect(() => {
-    getDetailSeries();
-    getCast();
+    getDetailSeries(seriesID.id).then((res) => {
+      setDetailSeries(res);
+      setLoading(false);
+      setGeners(res.genres);
+      setLastEP(res.last_episode_to_air.episode_number);
+    });
+    getCastseries(seriesID.id).then((res) => {
+      setCast(res.cast.slice(0, 15));
+      setLoading(false);
+    });
   }, []);
   return (
     <Container>

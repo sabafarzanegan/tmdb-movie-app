@@ -5,63 +5,26 @@ import { SiImdb } from "react-icons/si";
 import SwiperCast from "../Components/SwiperCast";
 import { useMovieContext } from "../Context/MovieContext";
 import { Spinner } from "@nextui-org/react";
+import { getDetailMovie, getCastmovie } from "../Utilis/MoviesFetch";
 
 function MovieDetailPage() {
   const [movieDetail, setMovieDetail] = useState({});
+
   const { loading, setLoading } = useMovieContext();
   const [geners, setGeners] = useState([]);
   const [casts, setCast] = useState([]);
 
   const movieId = useParams();
 
-  const getDetailMovie = async () => {
-    try {
-      setLoading(true);
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId.id}`,
-        {
-          method: "GET",
-          params: { language: "en-US" },
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNDZjZmQzOWM2NWNjODI4ODY2ODhmYjgwZjUwM2M5ZiIsIm5iZiI6MTcyMDc4Mzg1NC4zODQ4MTQsInN1YiI6IjY2MjNjMGE5YWY5NTkwMDE2NDY3Mjk0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D0JX0Rd-_CQO4sWhXXxDv-D93T3PSwDUKiCsCXOPeJA",
-          },
-        }
-      );
-      const data = await res.json();
-      if (res.status === 200) {
-        setLoading(false);
-        console.log(data);
-        setMovieDetail(data);
-        setGeners(data.genres);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const getCast = async () => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId.id}/credits`,
-      {
-        method: "GET",
-        params: { language: "en-US" },
-        headers: {
-          accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNDZjZmQzOWM2NWNjODI4ODY2ODhmYjgwZjUwM2M5ZiIsIm5iZiI6MTcyMDc4Mzg1NC4zODQ4MTQsInN1YiI6IjY2MjNjMGE5YWY5NTkwMDE2NDY3Mjk0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D0JX0Rd-_CQO4sWhXXxDv-D93T3PSwDUKiCsCXOPeJA",
-        },
-      }
-    );
-    const data = await res.json();
-    if (res.status === 200) {
-      setCast(data.cast.slice(0, 20));
-    }
-  };
-
   useEffect(() => {
-    getDetailMovie();
-    getCast();
+    getDetailMovie(movieId.id).then((res) => {
+      setMovieDetail(res);
+      setLoading(false);
+      setGeners(res.genres);
+    });
+    getCastmovie(movieId.id).then((res) => {
+      setCast(res.cast.slice(0, 20));
+    });
   }, []);
 
   return (

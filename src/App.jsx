@@ -25,7 +25,7 @@ function App() {
         <Route path="/detailmovie/:id" element={<MovieDetailPage />} />
         <Route path="/detailseries/:id" element={<SeriesDetailPage />} />
       </Routes>
-      <MobileNavbar />
+      {/* <MobileNavbar /> */}
     </>
   );
 }

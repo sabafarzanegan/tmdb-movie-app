@@ -6,6 +6,7 @@ import { useMovieContext } from "../Context/MovieContext";
 import CardItem from "../Components/CardItem";
 import Container from "../Components/Container";
 import CardSkelton from "../Components/Skelton";
+import { Spinner } from "@nextui-org/react";
 
 function PopularSeriesPage() {
   const { page, getPopularTv, loading } = useMovieContext();
@@ -20,7 +21,11 @@ function PopularSeriesPage() {
         <div className="min-h-svh  ">
           <div className=" mt-6   gap-6 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {AllPopularTv.map((movie) =>
-              loading ? <CardSkelton /> : <CardItem key={movie.id} {...movie} />
+              loading ? (
+                <Spinner key={movie.id} />
+              ) : (
+                <CardItem key={movie.id} {...movie} />
+              )
             )}
           </div>
           <div className=" bg-third flex flex-wrap items-center justify-center mt-4 px-2 mb-12 md:mb-0  py-14 md:py-4  ">
